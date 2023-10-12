@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bill Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.ibb.co/FBdS71f/maths-billing-calculator-4.jpg') repeat;
+            background-size: 480px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 10, 0);
+            padding: 20px;
+            max-width: 400px;
+            margin: auto auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #payment_method {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            color: black;
+            margin-top: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #0056b3;
+        }
+
+        button:hover {
+            background-color: #003d80;
+        }
+
+        /* Style the date input field */
+        #input_value1,
+        #input_value2,
+        #input_value3 {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            color: black;
+        }
+
+        /* Style the label associated with the date input */
+        label[for="input_value2"] {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the entered values display */
+        #enteredValues {
+            text-align: left;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 10, 0);
+            margin: 10px;
+            display: none;
+        }
+    </style>
+    <script>
+        // script.js
+        function showAlert() {
+            alert("Response has been successfully submitted");
+
+            // Capture the entered values
+            const name = document.getElementById('input_value1').value;
+            const date = document.getElementById('input_value2').value;
+            const cost = document.getElementById('input_value3').value;
+
+            // Display the entered values in the div
+            const enteredValuesDiv = document.getElementById('enteredValues');
+            enteredValuesDiv.innerHTML = `Entered Values: Name - ${name}, Date - ${date}, Cost - ${cost}`;
+            enteredValuesDiv.style.display = 'block';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <h1 id="pageTitle" data-title=#{content}></h1> -->
+    
+    <br><br><br><br>
+    <div class="container">
+        <h1>MONTHLY EXPENSE</h1>
+        <form action="/execute" method="POST" onsubmit="showAlert()">
+            <label for="input_value1">NAME</label>
+            <input type="text" id="input_value1" name="input_value1" placeholder="Enter Name">
+            <br>
+
+            <div class="form-group">
+                <label for="input_value2">SELECT A DATE</label>
+                <input type="date" id="input_value2" name="input_value2">
+            </div>
+            <br>
+            <label for="input_value3">COST</label>
+            <input type="text" id="input_value3" name="input_value3" placeholder="Enter your Cost">
+            <br>
+            <div class="form-group">
+                <label for="payment_method">WHO ARE YOU ?</label>
+                <select id="payment_method" name="payment_method">
+                    <option value="" selected disabled>SELECT</option>
+                    <option value="father">SATYABRATA</option>
+                    <option value="mother">RACHANA</option>
+                    <option value="sister">SOHINI</option>
+                    <option value="me">SOHEL</option>
+                </select><br>
+
+                <br>
+                <button type="submit" id="submit">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Display entered values here -->
+    <div id="enteredValues"></div>
+</body>
+
+</html>
