@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const path = require("path");
 const bodyParser = require('body-parser'); // Require body-parser
 
-// Set Pug as the view engine
-app.set('view engine', 'pug');
-app.set('views', './views');
+app.use('/static', express.static('static'))
 
-// Use bodyParser middleware to parse form data
-app.use(bodyParser.urlencoded({ extended: false }));
+app.set('view engine', 'pug')
 
-// Define a route to render the Pug template
+app.engine('pug', require('pug').__express);
+app.use(express.urlencoded({ extended: false }))
+app.set('views', path.join(__dirname, 'views'))
 app.get('/', (req, res) => {
     res.status(200).render('1.pug');
 });
